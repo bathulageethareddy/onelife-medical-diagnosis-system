@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctor's Advice</title>
+  <style>
+    nav {
+      background-color: blue;
+      padding: 2px 0;
+      position: fixed;
+      top: 0;
+      z-index: 1000;
+      width: 100%;
+    }
+
+    .navbar {
+      width: 100vw;
+      left: 0;
+      right: 0;
+      margin-top: 0;
+    }
+
+    .navbar ul {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar ul li {
+      margin-right: 25px;
+    }
+
+    .responsive-img {
+      width: 100px;
+      height: auto;
+      margin-left: 40px;
+      margin-right: 20px;
+    }
+
+    .navbar ul li:last-child {
+      margin-right: 0;
+    }
+
+    .navbar ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      padding: 5px 10px;
+      display: inline-block;
+      font-size: 25px;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 100px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 100vw;
+      margin: auto;
+      background: #ffffff;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #343a40;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ced4da;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    .question-box {
+      background-color: #f1f3f5;
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 15px;
+    }
+
+    .doctor-reply {
+      color: #28a745;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .reply-form {
+      margin-top: 10px;
+      padding: 10px;
+      background: #ffffff;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav class="navbar">
+    <ul>
+      <img src="Images/Logo.png" class="responsive-img">
+      <h1 style="text-align:center; font-size:40px; color:white; margin-right: 50px;">One Life❤️</h1>
+      <li><a href="Landing.html">Home</a></li>
+      <li><a href="Services.html">Services</a></li>
+      <li><a href="Appointment.html">Appointment</a></li>
+      <li><a href="D-Advise.html">D-Advise</a></li>
+      <li><a href="ContactUs.html">Contact Us</a></li>
+      <li><a href="AboutUs.html">About Us</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="container">
+  <h1>Doctor's Advise</h1>
+
+  <form id="advice-form">
+    <div class="form-group">
+      <label>Patient Name:</label>
+      <input type="text" id="patient_name" required>
+    </div>
+    <div class="form-group">
+      <label>Disease:</label>
+      <select id="disease" required>
+        <option value="">-- Select --</option>
+        <option value="diabetes">Diabetes</option>
+        <option value="heart_disease">Heart Disease</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Question:</label>
+      <textarea id="question" required></textarea>
+    </div>
+    <button type="submit">Submit Question</button>
+  </form>
+
+  <h2>Questions & Responses</h2>
+  <div id="questions-container"></div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("advice-form");
+
+  form.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const patient_name = document.getElementById("patient_name").value;
+    const disease = document.getElementById("disease").value;
+    const question = document.getElementById("question").value;
+
+    try {
+        const response = await fetch("http://localhost:5000/submit-advice", {
+
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ patient_name, disease, message: question }),
+
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to submit question");
+      }
+
+      form.reset();
+      loadQuestions();
+    } catch (error) {
+      alert(error.message);
+    }
+  });
+
+  async function loadQuestions() {
+    try {
+      const response = await fetch("http://localhost:5000/get-questions");
+      if (!response.ok) {
+        throw new Error("Failed to fetch questions");
+      }
+  
+      const questions = await response.json();
+      console.log("Fetched Questions:", questions); // Debugging
+  
+      const container = document.getElementById("questions-container");
+      container.innerHTML = "";
+  
+      if (!Array.isArray(questions) || questions.length === 0) {
+        container.innerHTML = "<p>No questions available.</p>";
+        return;
+      }
+  
+      questions.forEach(q => {
+        console.log("Processing Question:", q); // Debugging
+  
+        const questionElement = document.createElement("div");
+        questionElement.classList.add("question-box");
+  
+        questionElement.innerHTML = `
+          <p><strong>Patient:</strong> ${q.patient_name || "Unknown"} | <strong>Disease:</strong> ${q.disease || "Unknown"}</p>
+         <p><strong>Q:</strong> ${q.message ? q.message : "<span style='color:red;'>No question provided</span>"}</p>
+          ${q.doctor_reply 
+            ? `<p class="doctor-reply"><strong>Dr. ${q.doctor_name}:</strong> ${q.doctor_reply}</p>`
+            : `
+            <div class="reply-form">
+              <form onsubmit="submitReply(event, '${q._id}')">
+                <input type="text" id="doctor_name_${q._id}" placeholder="Doctor Name" required>
+                <input type="text" id="doctor_reply_${q._id}" placeholder="Your Reply" required>
+                <button type="submit">Reply</button>
+              </form>
+            </div>
+          `}
+        `;
+  
+        container.appendChild(questionElement);
+      });
+    } catch (error) {
+      alert("Error loading questions: " + error.message);
+    }
+  }
+  
+  window.submitReply = async function (event, id) {
+    event.preventDefault();
+
+    const doctor_name = document.getElementById(`doctor_name_${id}`).value;
+    const doctor_reply = document.getElementById(`doctor_reply_${id}`).value;
+
+    try {
+      const response = await fetch("http://localhost:5000/add-reply", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id, doctor_name, doctor_reply }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to submit reply");
+      }
+
+      loadQuestions();
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
+  loadQuestions();
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes</title>
+    <link rel="stylesheet" href="Diabetes.css">
+    <script>
+        function getDiagnosis() {
+            var inputs = document.querySelectorAll(".dia input");
+            for (var i = 0; i < inputs.length; i++) {
+                if (inputs[i].value.trim() === "") {
+                    alert("Please fill out all fields before submitting.");
+                    return;
+                }
+            }
+            var result = Math.random() < 0.5 
+                ? "Sorry to say you are diagnosed with diabetes." 
+                : "Hurray! You are not diagnosed with diabetes.";
+            alert(result);
+        }
+    </script>
+</head>
+<body>
+    <div class="header">
+        Diabetes Prediction
+    </div>
+    
+    <div class="container">
+        <div class="blur-background">
+            <div class="dia">
+                <label for="1name">Number of times Pregnant</label>
+                <input type="text" id="1name" name="pregnant" required>
+            </div>
+            <div class="dia">
+                <label for="2name">Plasma glucose concentration (2 hours in an oral glucose tolerance test)</label>
+                <input type="text" id="2name" name="glucose" required>
+            </div>
+            <div class="dia">
+                <label for="3name">Diastolic blood pressure (mm Hg)</label>
+                <input type="text" id="3name" name="bp" required>
+            </div>
+            <div class="dia">
+                <label for="4name">Triceps skin fold thickness (mm)</label>
+                <input type="text" id="4name" name="triceps" required>
+            </div>
+            <div class="dia">
+                <label for="5name">2-Hour serum insulin (mu U/ml)</label>
+                <input type="text" id="5name" name="insulin" required>
+            </div>
+            <div class="dia">
+                <label for="6name">Body Mass Index (Weight in kg/(height in m)^2)</label>
+                <input type="text" id="6name" name="bmi" required>
+            </div>
+            <div class="dia">
+                <label for="7name">Age (Years)</label>
+                <input type="text" id="7name" name="age" required>
+            </div>
+            <div class="button">
+                <button onclick="getDiagnosis()">Submit</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+body {
+    background-image: url("Images/pneumonia1.jpg");
+    background-size: auto;
+    background-position: center;
+    background-size: 1500px;
+}
+
+.card {
+    text-align: center;
+    margin: 50px;
+}
+
+.container {
+    text-align: center;
+    margin: auto;
+    margin-top: 100px;
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 20px;
+    width: fit-content;
+    max-width: 90%;
+    transition: all 0.3s ease-in-out;
+}

@@ -1,0 +1,180 @@
+<!Doctype html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>
+            Onelife
+        </title>
+        <link rel="stylesheet" href="Landing.css">
+    </head>
+    <body>
+        <header>
+        <nav class="navbar">
+            
+            <ul> <img src="Images/Logo.png" class="responsive-img">
+                <h1 style="text-align:center;font-size:40px;color :white;margin-right: 50px;">One Life❤️</h1>               
+                <li><a href="Landing.html">Home</a></li>
+                <li><a href="Services.html">Services</a></li>
+                <li><a href="Appointment.html">Appointment</a></li>
+                <li><a href="D-Advise.html">D-Advise</a></li>
+                <li><a href="ContactUs.html">Contact Us</a></li>
+                <li><a href="AboutUs.html">About Us</a></li>
+            </ul>
+        </nav>
+        </header>
+        
+      <main>
+        <section id="home">
+            <h1 class="main-title">Innovative Medical Solutions</h1>
+            <h3 class="section-subtitle">Empowering Healthcare through Technology</h3>
+        </section>
+        <section style="display: flex;justify-content: center;align-items:center;font-weight: 200;">
+            
+        <img src="Images/A.I.png" class="responsive-img2";>
+        
+        
+        </section>  
+        <section>
+            <h1 style="font-size: 50px; text-align: center;">Disease Predictions</h1>
+            <div class="slideshow-container">
+                <div class="slides">
+                    <img src="Images/Diabetes.jpg" class="slide-img">
+                    <div class="caption">Diabetes</div>
+                </div>
+                <div class="slides">
+                    <img src="Images/Heart.png" class="slide-img">
+                    <div class="caption">Heart Disease</div>
+                </div>
+                <div class="slides">
+                    <img src="Images/liver.png" class="slide-img">
+                    <div class="caption">Liver Disease</div>
+                </div>
+                <div class="slides">
+                    <img src="Images/Kidney.png" class="slide-img">
+                    <div class="caption">Kidney Disease</div>
+                </div>
+                <div class="slides">
+                    <img src="Images/BreastCancer.png" class="slide-img">
+                    <div class="caption">Breast Cancer</div>
+                </div>
+                <div class="slides">
+                    <img src="Images/Malaria.png" class="slide-img">
+                    <div class="caption">Malaria</div>
+                </div>
+                <div class="slides">
+                    <img src="Images/pneumonia.jpg" class="slide-img">
+                    <div class="caption">Pneumonia</div>
+                </div>
+            </div>
+        
+            <div class="dots">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+                <span class="dot" onclick="currentSlide(5)"></span>
+                <span class="dot" onclick="currentSlide(6)"></span>
+                <span class="dot" onclick="currentSlide(7)"></span>
+            </div>
+        
+            <script>
+                let slideIndex = 1;
+                showSlides(slideIndex);
+        
+                // Auto-slide functionality
+                let slideInterval = setInterval(() => {
+                    plusSlides(1);
+                }, 1000); // Change slide every 5 seconds
+        
+                function plusSlides(n) {
+                    showSlides(slideIndex += n);
+                }
+        
+                function currentSlide(n) {
+                    showSlides(slideIndex = n);
+                }
+        
+                function showSlides(n) {
+                    let i;
+                    let slides = document.getElementsByClassName("slides");
+                    let dots = document.getElementsByClassName("dot");
+        
+                    if (n > slides.length) slideIndex = 1;
+                    if (n < 1) slideIndex = slides.length;
+        
+                    for (i = 0; i < slides.length; i++) {
+                        slides[i].style.display = "none";
+                    }
+        
+                    for (i = 0; i < dots.length; i++) {
+                        dots[i].className = dots[i].className.replace(" active", "");
+                    }
+        
+                    slides[slideIndex - 1].style.display = "block";
+                    dots[slideIndex - 1].className += " active";
+                }
+            </script>
+        </section>
+        <section>
+         <h1 style="font-size: 50px;text-align: center;">Our Services</h1>  
+         <img src="Images/A.I Logo.png" class="responsive-img3" style="float: left;margin-left: 100px;">
+        <img src="Images/d-appointment.png" class="responsive-img3" style="float: none;margin-right:85px;margin-left: 121px;">
+        <img src="Images/d-advice.png" class="responsive-img3" style="float: right;margin-right:100px ;margin-left:90px;">
+        </section>
+        <section class="reviews-section">
+            <h1 class="section-title">User Reviews</h1>
+            <div class="review-container">
+                <div class="review-card">
+                    <img src="Images/BreastCancer person.jpg" alt="Breast Cancer" class="review-img">
+                    <p class="info">One Life's breast cancer prediction tool gave my wife early insights and connected us to a specialist instantly. The doctor’s advice on lifestyle changes was life-saving!<br>⭐⭐⭐⭐⭐</p>
+                </div>
+                <div class="review-card">
+                    <img src="Images/Diabetes person.jpg" alt="Diabetes" class="review-img">
+                    <p class="info">The diabetes prediction was accurate and easy to understand. I loved how quickly I could book an appointment and get expert recommendations through the website.<br>⭐⭐⭐⭐</p>
+                </div>
+                <div class="review-card">
+                    <img src="Images/heart person.jpg" alt="Heart Disease" class="review-img">
+                    <p class="info">One Life helped me identify early signs of heart disease, and the seamless connection to a cardiologist made the process stress-free. A must-use platform for health awareness!<br>⭐⭐⭐⭐⭐</p>
+                </div>
+            </div>
+        </section>
+
+        <section style="display: flex; align-items: center; justify-content: center; gap: 20px; margin: 20px;">
+            <h1 class="disease">Your Feedback Matters Us the Most</h1>
+        
+            <button onclick="redirectToFeedback()" style="padding: 10px 20px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">
+                Give Feedback
+            </button>
+        </section>
+        
+        <script>
+            function redirectToFeedback() {
+                window.location.href = "Feedback.html"; // Redirects to Feedback page
+            }
+        </script>
+        
+        <section style="background-color: blue; padding: 20px;">
+            <h1 style="color: white; margin-left: 50px;padding:0px;margin-bottom: 10px;">Follow Us On</h1>
+            <footer class="social-footer">
+                <p class="info1">
+                    <img src="Images/Instagram.png" class="social-icon">OneLife
+                </p>
+                <p class="info1">
+                    <img src="Images/gmail.png" class="social-icon">onelifeforu04@gmail.com
+                </p>
+                <p class="info1">
+                    <img src="Images/YOUTUBE.png" class="social-icon">OneLife
+                </p>
+            </footer>
+        </section>
+        
+        
+
+    </main>  
+
+    </body>
+</html>
+
+
+

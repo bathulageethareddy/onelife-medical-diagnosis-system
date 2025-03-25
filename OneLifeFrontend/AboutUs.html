@@ -1,0 +1,53 @@
+<div id="header"></div>
+<script>
+    fetch("Header.html")
+        .then(response => response.text())
+        .then(data => document.getElementById("header").innerHTML = data);
+</script>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - One Life</title>
+    <link rel="stylesheet" href="AboutUs.css">
+
+</head>   
+           
+       
+        <body>   
+    <main>
+    <div class="container">
+        <h1>About Us</h1>
+         <h1 style="margin-top: 70px;">Our Team</h1>
+        <div class="team">
+            <div class="team-member">
+                <img src="Images/Sowmya.png" alt="Sivakumari Sowmya">
+                <h3>SIVAKUMARI SOWMYA</h3>
+                <p>Team Lead</p>
+            </div>
+            <div class="team-member">
+                <img src="Images/Geetha.png" alt="Geetha Reddy">
+                <h3>GEETHA REDDY</h3>
+                <p>Team-member</p>
+            </div>
+            <div class="team-member">
+                <img src="Images/Rajendra.png" alt="Rajendra Varma">
+                <h3>RAJENDRA VARMA</h3>
+                <p>Team-member</p>
+            </div>
+            <div class="team-member">
+                <img src="Images/Sailaja.png" alt="Sailaja">
+                <h3>SAILAJA</h3>
+                <p>Team-member</p>
+            </div>
+        </div>
+    </div>
+    <h1 style="margin-left: 30px;">Our Mission</h1>
+    <p class="info">At OneLife, our mission is to simplify medical diagnoses and enhance access to healthcare. We bridge the gap between patients and healthcare professionals by providing a secure platform for storing and reviewing medical records. Users can consult certified doctors and receive expert advice tailored to their needs. Our system prioritizes data security and privacy, ensuring your information is safe. We aim to make healthcare more accessible, efficient, and user-friendly. With OneLife, managing your health has never been easier.
+
+        </p><h3 style="margin-left: 20px;">"Your health, our priority – bridging care and convenience."</h3>
+        </main>
+</body>
+</html>
+

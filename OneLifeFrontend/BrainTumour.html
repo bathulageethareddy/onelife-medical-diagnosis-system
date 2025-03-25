@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrainTumour Predictor</title>
+    <link rel="stylesheet" href="Malaria.css">
+</head>
+<body>
+
+    <div class="alert alert-danger"></div>
+    <div class="container">
+        <h1>Brain Tumor Predictor</h1>
+        <div class="card">
+            <h3>Please upload the image of the cell</h3>
+            <form class="form-horizontal" onsubmit="showAlert(event)">
+                <input onchange="readURL(this);" type="file" name="image" placeholder="Upload Image">
+                <br><br>
+                <img id="blah" src="#" alt="UPLOADED IMAGE WILL APPEAR HERE" style="display: none; max-width: 100%; height: auto;"/>
+                <br><br>
+                <input class="btn" type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    let img = document.getElementById('blah');
+                    let container = document.querySelector('.container');
+
+                    img.src = e.target.result;
+                    img.style.display = 'block'; // Show the image
+
+                    setTimeout(() => {
+                        container.style.width = img.naturalWidth > 500 ? '80%' : '500px';
+                        container.style.height = 'auto';
+                    }, 100);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function showAlert(event) {
+            event.preventDefault(); // Prevent form submission
+            let result = Math.random() < 0.5 ? "Sorry to say you are diagnosed with Malaria" : "hurray you are not diagnosed with Malaria";
+            alert(result);
+        }
+    </script>
+
+</body>
+</html>

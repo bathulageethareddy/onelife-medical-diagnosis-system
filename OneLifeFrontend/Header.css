@@ -1,0 +1,45 @@
+nav {
+    background-color: blue; /* Set the background color of the navbar */
+    padding: 0px 0; /* Vertical padding for the navbar */
+    position: fixed; /* Makes the navbar stick to the top */
+    top: 0; /* Sticks the navbar to the top */
+    z-index: 1000; /* Ensures it stays above other elements */
+    width: 100%; /* Ensures the navbar spans the full width */
+}
+
+.navbar ul {
+    display: flex; /* Aligns list items in a row */
+    justify-content: flex-start; /* Align items to the left */
+    align-items: center; /* Center items vertically */
+    list-style: none; /* Removes bullet points */
+    margin: 0px; /* Resets margin */
+    padding: 0; /* Resets padding */
+}
+
+.navbar ul li {
+    margin-right: 25px; /* Adds spacing between list items */
+}
+.responsive-img{
+    width:100px;
+    height:auto;
+    margin-left: 40;
+    margin-right: 20;
+}
+.navbar ul li:last-child {
+    margin-right: 0; /* Removes extra margin on the last item */
+}
+
+.navbar ul li a {
+    text-decoration: none; /* Removes underline from links */
+    color: white; /* Sets the link text color to white */
+    font-weight: bold; /* Makes the text bold */
+    padding: 5px 10px; /* Adds padding around the links */
+    display: inline-block; /* Ensures clickable area is padded */
+    font-size: 25px;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}

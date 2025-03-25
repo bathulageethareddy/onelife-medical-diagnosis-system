@@ -1,0 +1,170 @@
+nav {
+    background-color: blue; /* Set the background color of the navbar */
+    padding: 2px 0; /* Vertical padding for the navbar */
+    position: fixed; /* Makes the navbar stick to the top */
+    top: 0; /* Sticks the navbar to the top */
+    z-index: 1000; /* Ensures it stays above other elements */
+    width: 100%; /* Ensures the navbar spans the full width */
+}
+
+.navbar ul {
+    display: flex; /* Aligns list items in a row */
+    justify-content: flex-start; /* Align items to the left */
+    align-items: center; /* Center items vertically */
+    list-style: none; /* Removes bullet points */
+    margin: 0; /* Resets margin */
+    padding: 0; /* Resets padding */
+}
+
+.navbar ul li {
+    margin-right: 25px; /* Adds spacing between list items */
+}
+.main-title {
+    font-size: 50px;
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+    font-weight: bold;
+
+}
+.section-subtitle {
+    font-size: 20px;
+    text-align: center;
+    color: #555; /* Slightly lighter than the main heading */
+    margin-top: 0px; /* Spacing between main heading and subheading */
+    margin-bottom: 30px; /* Spacing between subheading and content */
+    font-weight: normal;
+    line-height: 1.5;
+}
+.responsive-img{
+    width:100px;
+    height:auto;
+    margin-left: 40;
+    margin-right: 20;
+}
+.responsive-img2{
+    width:800px;
+    height:auto;
+    float:right;
+
+}
+
+.navbar ul li:last-child {
+    margin-right: 0; /* Removes extra margin on the last item */
+}
+
+.navbar ul li a {
+    text-decoration: none; /* Removes underline from links */
+    color: white; /* Sets the link text color to white */
+    font-weight: bold; /* Makes the text bold */
+    padding: 5px 10px; /* Adds padding around the links */
+    display: inline-block; /* Ensures clickable area is padded */
+    font-size: 25px;
+}
+  /* Container Styles */
+  .container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Search Bar Styles */
+  .search-bar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }  
+  .search-bar input {
+    width: 70%;
+    margin-top: 70px;
+    padding: 10px;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .search-bar button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    margin-top: 70px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .search-bar button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Filters Styles */
+  .filters {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .filters select {
+    width: 23%;
+    padding: 10px;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  /* Doctor Card Styles */
+  .doctor-card {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .doctor-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+  
+  .doctor-info {
+    flex-grow: 1;
+  }
+  
+  .doctor-info h2 {
+    margin: 0;
+    font-size: 18px;
+    color: #333333;
+  }
+  
+  .doctor-info p {
+    margin: 5px 0;
+    color: #555555;
+  }
+  
+  .book-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .book-button:hover {
+    background-color: #0056b3;
+  }
+  @media (max-width: 768px) {
+    .review-container {
+        flex-direction: column; /* Stacks cards vertically on smaller screens */
+        align-items: center;
+    }
+}
+  

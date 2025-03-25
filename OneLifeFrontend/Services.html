@@ -1,0 +1,80 @@
+<div id="header"></div>
+<script>
+    fetch("Header.html")
+        .then(response => response.text())
+        .then(data => document.getElementById("header").innerHTML = data);
+</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - AI Disease Recognition</title>
+    <link rel="stylesheet" href="services.css">
+</head>
+<body>
+    <main>
+        <section id="Appointment">
+        </section>
+    </main>
+    <h1 class="main-title">Services - AI Disease Recognition</h1>
+        <p class="intro">
+            Our AI-driven system leverages Machine Learning (ML) and Deep Learning (DL) to accurately predict various diseases from medical data. These technologies provide instant, reliable results by analyzing complex patterns for early detection. With AI, we enable faster diagnoses, improving patient outcomes and ensuring timely intervention.
+        </p>
+
+    <div class="container">
+        
+        <!-- Left Section -->
+        <div class="left-section">
+            <img src="images/Doctor Service.png" alt="Doctor Image">
+        </div>
+
+        <!-- Right Section -->
+        <div class="right-section">
+            <div class="disease-grid">
+                <div class="disease">
+                    <a href="Diabetes.html"><img src="Images/Diabetes.jpg" href="Diabetes.html">
+                    </a>
+                    <h3>Diabetes</h3>
+                </div>
+                <div class="disease">
+                    <a href="Liver.html">
+                    <img src="Images/liver.png" alt="Liver Disease" >
+                    </a>
+                    <h3>Liver</h3>
+                </div>
+                <div class="disease">
+                    <a href="Heart.html">
+                    <img src="Images/Heart.png" alt="Heart Disease">
+                    </a>
+                    <h3>Heart</h3>
+                </div>
+                <div class="disease">
+                    <a href="Kidney.html">
+                    <img src="Images/Kidney.png" alt="Kidney Disease">
+                    </a>
+                    <h3>Kidney</h3>
+                </div>
+                <div class="disease">
+                    <a href="BreastCancer.html">
+                    <img src="Images/BreastCancerLogo.png" alt="Breast Cancer">
+                    </a>
+                    <h3>Breast Cancer</h3>
+                </div>
+                <div class="disease">
+                    <a href="Malaria.html">
+                    <img src="Images/malaria Logo.jpg" alt="Malaria">
+                    </a>
+                    <h3>Malaria</h3>
+                </div>
+                <div class="disease">
+                    <a href="Pneumonia.html">
+                    <img src="images/pneumonia Logo.jpg" alt="Pneumonia">
+                    </a>
+                    <h3>Pneumonia</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

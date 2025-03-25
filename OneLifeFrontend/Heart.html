@@ -1,0 +1,72 @@
+<!Doctype html>
+<html>
+    <meta charset="UTF-8">
+    <head>
+    <title>Heart Disease</title>
+    <link rel="stylesheet" href="Heart.css">
+    <script>
+                    
+        function getDiagnosis() {
+            var inputs = document.querySelectorAll("input");
+            var allFilled = true;
+    
+            inputs.forEach(input => {
+                if (input.value.trim() === "") {
+                    allFilled = false;
+                    
+                } else {
+                    input.style.border = ""; 
+                }
+            });
+    
+            if (!allFilled) {
+                alert("Please fill out all fields before proceeding.");
+                return;
+            }
+            function getDiagnosis() {
+                var result = Math.random() < 0.5 ? "Sorry to say you are diagnosed with the Breastcancer" : "Hurray,You are not diagnosed with the BreastCancer";
+                alert(result);
+            }
+            
+        }
+    </script>
+    
+</head>
+<body>
+    <div class="header">Heart Disease</div>
+    <div class="Container">
+    <div class="style">
+    <label for="age">Age in Years ex:29-77</label>
+    <input type="text" name="age" id="age">
+    </div>
+    <div class="style">
+    <label for="sex">Sex</label>
+    <input type="number" name="sex" id="sex">
+    </div>
+    <div class="style">
+    <label for="pain">Chest Pain(0 to 3 as worst)</label>
+    <input type="text" name="pain" id="pain">
+    </div>
+    <div class="style">
+    <label for="serum">Serum cholestoral in mg/dl</label>
+    <input type="number" name="serum" id="serum">
+    </div>
+    <div class="style">
+    <label for="blood sugar">Fasting Blood Sugar</label>
+    <input type="number" name="blood sugar" id="blood sugar">
+    </div>
+    <div class="style">
+    <label for="electrocardiographic">Resting electrocardiographic(0,1)</label>
+    <input type="number" name="electrocardiographic" id="electrocardiographic">
+    </div>
+    <div class="style">
+    <label for="Heartrate">Heart Rate</label>
+    <input type="number" name="Heartrate" id="Heartrate" >
+    </div>
+    <div class="button">
+    <input type="submit" name="submit" onclick="getDiagnosis()">
+    </div>
+</div>
+    
+</body>
+</html>

@@ -1,0 +1,119 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color:whitesmoke;
+    margin: 0;
+    padding: 0;
+    color: white;
+    
+}
+
+/* Background Blur Effect */
+.bg-image {
+    background-image: url("C:/Users/sowmy_m2wirmf/OneDrive/Pictures/Screenshots/Screenshot 2025-01-27 163650.png");
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+}
+
+/* Top and Bottom Color Strips */
+.header, .footer {
+    width: 100%;
+    height:60px;
+    background-color: rgb(207, 63, 143);
+    padding: 20px 0;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Form Container */
+.Container {
+    background-color: white;
+    width: 90%;
+    margin: 100px auto 30px; /* Adjusted for fixed header */
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    color: black;
+}
+
+/* Form Layout with Grid */
+.box {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2em;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: inset;
+    margin-top: 2em;
+}
+.box input {
+    width: 100%;   
+    height: 20px;  
+    font-size: 18px;
+    padding: 10px;  
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+/* Form Row: Label and Input Horizontal Alignment */
+.form-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px; /* Add spacing between rows */
+}
+
+/* Label Styling */
+.form-group label {
+    width: 40%; /* Equal width for all labels */
+    font-weight: bold;
+    text-align: right;
+    margin-right: 20px; /* Space between label and input */
+}
+
+/* Input Field Styling */
+.form-group input {
+    width: 50%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Submit Button */
+.button {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.button input {
+    background-color: rgb(207, 63, 143);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.button input:hover {
+    background-color: #b63a75;
+}

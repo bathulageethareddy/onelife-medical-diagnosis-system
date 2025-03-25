@@ -1,0 +1,157 @@
+.main-title {
+    font-size: 40px;
+    text-align: center;
+    margin-top: 150px;
+    color: black;
+    font-weight: bold;
+
+}
+
+
+.responsive-img2{
+    width:800px;
+    height:auto;
+    float:right;
+
+}
+
+.topnav input[type=text]{
+    float:right;
+    padding:6px;
+    border:none;
+    margin-top:8px;
+    margin-right:16px;
+    font-size:17px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+.container {
+    padding: 2em;
+}
+.team {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2em;
+    margin-top: 2em;
+}
+.team-member {
+    background-color: #f4f4f4;
+    padding: 1em;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.team-member img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 1em;
+}
+.team-member h3 {
+    margin: 0.5em 0 0.2em;
+}
+.team-member p {
+    margin: 0;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+    align-items: start;
+}
+
+.left-section, .right-section {
+    flex: 1;
+    padding: 20px;
+}
+.left-section {
+    margin-top: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-section img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.right-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+ h1 {
+    text-align: center;
+    color: #333;
+}
+
+ p {
+    text-align: justify;
+    margin: 20px 0;
+    color: #555;
+}
+
+.disease-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.disease {
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+.disease img {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    .left-section, .right-section {
+        padding: 10px;
+    }
+
+    .disease-grid {
+        grid-template-columns: 1fr;
+    }
+}
+.intro {
+    text-align: justify;
+    margin-top: 20px;
+    color: #333;
+}
+@media (max-width: 768px) {
+    .review-container {
+        flex-direction: column; /* Stacks cards vertically on smaller screens */
+        align-items: center;
+    }
+}
+
+

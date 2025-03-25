@@ -1,0 +1,112 @@
+<!Doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width",initial-scale="1.0">
+        <title>Kidney</title>
+        <link rel="stylesheet" href="Kidney.css">
+        <script>
+                    
+            function getDiagnosis() {
+                var inputs = document.querySelectorAll("input");
+                var allFilled = true;
+        
+                inputs.forEach(input => {
+                    if (input.value.trim() === "") {
+                        allFilled = false;
+                        
+                    } else {
+                        input.style.border = ""; 
+                    }
+                });
+        
+                if (!allFilled) {
+                    alert("Please fill out all fields before proceeding.");
+                    return;
+                }
+                function getDiagnosis() {
+                    var result = Math.random() < 0.5 ? "Sorry to say you are diagnosed with the Breastcancer" : "Hurray,You are not diagnosed with the BreastCancer";
+                    alert(result);
+                }
+                
+            }
+        </script>
+    </head>
+    <body>
+        <div class="header">Kidney Disease Diagnosis</div>
+
+        <div class="card">
+        
+        <div class="dia">
+        <label for="age">Age(numerical) in years   </label>
+        <input type="text" id="age" name="age">
+        </div>
+        <div class="dia">
+        <label for="bp">Blood Pressure(numerical) in mm/Hg</label>
+        <input type="text" id="bp" name="bp" >
+        </div>
+        <div class="dia">
+        <label for="al">Albumin(nominal)-(0,1,2,3,4,5)</label>
+        <input type="text" id="al" name="al">
+        </div>
+        <div class="dia">
+        <label for="su">Sugar(nominal)-(0,1,2,3,4,5)</label>
+        <input type="text" id="su" name="su">
+        </div><div class="dia">
+        <label for="rbc">Red Blood Cells(nominal)-(normal,abnormal)</label>
+        <input type="text" id="rbc" name="rbc">
+        </div>
+        <div class="dia">
+        <label for="pc">Pus Cell (nominal)-(normal,abnormal)</label>
+        <input type="text" id="pc" name="pc">
+        </div>
+        <div class="dia">
+        <label for="pcc">Pus Cell clumps(nominal)-(present,notpresent)</label>
+        <input type="text" id="pcc" name="pcc">
+        </div>
+        <div class="dia">
+        <label for="ba">Bacteria(nominal)-(present,notpresent)</label>
+        <input type="text" id="ba" name="ba">
+        </div>
+        <div class="dia">
+            <label for="bgr">Blood Glucose Random(numerical) in mgs/dl</label>
+            <input type="text" id="bgr" name="bgr">
+            </div>
+            <div class="dia">
+                <label for="bu">Blood Urea(numerical) in mgs/dl</label>
+                <input type="text" id="bu" name="bu">
+                </div>
+                <div class="dia">
+                    <label for="sc">Serum Creatinine(numerical) in mgs/dl</label>
+                    <input type="text" id="sc" name="sc">
+                    </div><div class="dia">
+                        <label for="pot">Potassium(numerical) in mEq/L                        </label>
+                        <input type="text" id="pot" name="pot">
+                        </div>
+                        <div class="dia">
+                            <label for="wc">White Blood Cell Count(numerical) in cells/cumm</label>
+                            <input type="text" id="wc" name="wc">
+                            </div>
+                            <div class="dia">
+                                <label for="htn">Hypertension(nominal)-(yes,no)</label>
+                                <input type="text" id="htn" name="htn">
+                                </div><div class="dia">
+                                    <label for="dm">Diabetes Mellitus(nominal)-(yes,no)</label>
+                                    <input type="text" id="dm" name="dm">
+                                    </div><div class="dia">
+                                        <label for="cad">Coronary Artery Disease(nominal)-(yes,no)</label>
+                                        <input type="text" id="cad" name="cad">
+                                        </div><div class="dia">
+                                            <label for="pe">Pedal Edema(nominal)-(yes,no)</label>
+                                            <input type="text" id="pe" name="pe">
+                                            </div><div class="dia">
+                                                <label for="ane">Anemia(nominal)-(yes,no)</label>
+                                                <input type="text" id="ane" name="ane">
+                                                </div>
+                
+        <div class="button">
+        <input type="submit" name="submit" class="button" onclick="getDiagnosis()">
+        </div>
+    </body>
+
+</html>

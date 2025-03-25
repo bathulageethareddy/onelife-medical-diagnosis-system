@@ -1,0 +1,120 @@
+<section>
+    <h1 style="font-size: 50px; text-align: center;">Disease Predictions</h1>
+    <div class="slideshow-container">
+        <div class="slides">
+            <img src="C:\Users\sowmy_m2wirmf\OneDrive\Documents\One Life Pictures\Diabetes.jpg" class="slide-img">
+            <div class="caption">Diabetes</div>
+        </div>
+        <div class="slides">
+            <img src="C:\Users\sowmy_m2wirmf\OneDrive\Pictures\Screenshots\Screenshot 2024-12-24 221734.png" class="slide-img">
+            <div class="caption">Heart Disease</div>
+        </div>
+        <div class="slides">
+            <img src="C:\Users\sowmy_m2wirmf\OneDrive\Documents\One Life Pictures\liver.png" class="slide-img">
+            <div class="caption">Liver Disease</div>
+        </div>
+        <div class="slides">
+            <img src="C:\Users\sowmy_m2wirmf\OneDrive\Pictures\Screenshots\Screenshot 2024-12-24 221901.png" class="slide-img">
+            <div class="caption">Kidney Disease</div>
+        </div>
+        <div class="slides">
+            <img src="C:\Users\sowmy_m2wirmf\Downloads\breastcancer.jpg" class="slide-img">
+            <div class="caption">Breast Cancer</div>
+        </div>
+        <div class="slides">
+            <img src="C:\Users\sowmy_m2wirmf\OneDrive\Documents\One Life Pictures\malaria.jpg" class="slide-img">
+            <div class="caption">Malaria</div>
+        </div>
+        <div class="slides">
+            <img src="C:\Users\sowmy_m2wirmf\OneDrive\Documents\One Life Pictures\pneumonia.jpg" class="slide-img">
+            <div class="caption">Pneumonia</div>
+        </div>
+    </div>
+
+    <div class="dots">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+        <span class="dot" onclick="currentSlide(5)"></span>
+        <span class="dot" onclick="currentSlide(6)"></span>
+        <span class="dot" onclick="currentSlide(7)"></span>
+    </div>
+
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        // Auto-slide functionality
+        let slideInterval = setInterval(() => {
+            plusSlides(1);
+        }, 1000); // Change slide every 5 seconds
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("slides");
+            let dots = document.getElementsByClassName("dot");
+
+            if (n > slides.length) slideIndex = 1;
+            if (n < 1) slideIndex = slides.length;
+
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+    </script>
+</section>
+
+<style>
+    .slide-img {
+        width: 100%;
+        height: 60vh; /* 70% of the viewport height */
+        object-fit: cover; /* Ensure the image scales properly */
+    }
+
+    .slideshow-container {
+        position: relative;
+        max-width: 100%;
+        margin: auto;
+        overflow: hidden;
+    }
+
+    .slides {
+        display: none;
+        text-align: center;
+    }
+
+    .dots {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .dots .dot {
+        height: 15px;
+        width: 15px;
+        margin: 0 5px;
+        display: inline-block;
+        background-color: #bbb;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    .dots .active {
+        background-color: #717171;
+    }
+</style>

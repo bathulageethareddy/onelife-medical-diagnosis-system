@@ -1,0 +1,161 @@
+<div id="header"></div>
+<script>
+    fetch("Header.html")
+        .then(response => response.text())
+        .then(data => document.getElementById("header").innerHTML = data);
+</script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onelife - Book an Appointment</title>
+    <link rel="stylesheet" href="Appointment.css">
+</head>
+<body>
+
+<main>
+    <section id="Appointment">
+        <div class="header">
+            <h1>Book an Appointment</h1>
+        </div>
+        <div class="container">
+            <!-- Search Bar -->
+            <div class="search-bar">
+                <input type="text" id="locationInput" placeholder="Enter your location or use GPS">
+                <button onclick="getUserLocation()">Use My Location</button>
+            </div>
+
+            <!-- Filters -->
+            <div class="filters">
+                <select>
+                    <option value="">City</option>
+                    <option value="hyderabad">Hyderabad</option>
+                    <option value="bangalore">Bangalore</option>
+                    <option value="mumbai">Mumbai</option>
+                </select>
+                <select>
+                    <option value="">Speciality</option>
+                    <option value="cardiology">Cardiology</option>
+                    <option value="neurology">Neurology</option>
+                    <option value="oncology">Oncology</option>
+                </select>
+                <select>
+                    <option value="">Language</option>
+                    <option value="english">English</option>
+                    <option value="telugu">Telugu</option>
+                    <option value="hindi">Hindi</option>
+                </select>
+                <select>
+                    <option value="">Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+
+            <!-- Google Map -->
+            <div id="map" style="height: 500px; width: 100%; margin-top: 20px;"></div>
+
+            <!-- Doctor Screenshot (Initially Hidden) -->
+            <div class="doctor-screenshot" style="display: none; text-align: center; margin-top: 20px;">
+                <img id="doctorScreenshot" src="Images/Demo Map.png" style="max-width: 100%; border-radius: 10px;">
+            </div>
+
+        </div>
+    </section>
+</main>
+
+<script>
+    let map;
+    let service;
+
+    function initMap() {
+        map = new google.maps.Map(document.getElementById("map"), {
+            center: { lat: 17.3850, lng: 78.4867 }, // Default to Hyderabad
+            zoom: 12,
+        });
+    }
+
+    function getUserLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition, showError);
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    }
+
+    function showPosition(position) {
+        let latitude = position.coords.latitude;
+        let longitude = position.coords.longitude;
+
+        console.log("Latitude:", latitude);
+        console.log("Longitude:", longitude);
+
+        let userLocation = new google.maps.LatLng(latitude, longitude);
+        
+        document.getElementById("locationInput").value = `${latitude}, ${longitude}`;
+        map.setCenter(userLocation);
+        map.setZoom(14);
+
+        getNearbyHospitals(userLocation);
+
+        // Show the screenshot image dynamically
+        document.querySelector(".doctor-screenshot").style.display = "block";
+    }
+
+    function showError(error) {
+        let message;
+        switch (error.code) {
+            case error.PERMISSION_DENIED:
+                message = "Location access denied. Please enter manually.";
+                break;
+            case error.POSITION_UNAVAILABLE:
+                message = "Location information is unavailable.";
+                break;
+            case error.TIMEOUT:
+                message = "Location request timed out. Please try again.";
+                break;
+            default:
+                message = "Error getting location. Please enter manually.";
+        }
+        alert(message);
+    }
+
+    function getNearbyHospitals(location) {
+        let request = {
+            location: location,
+            radius: 5000, // 5km radius
+            type: ['hospital']
+        };
+
+        service = new google.maps.places.PlacesService(map);
+        service.nearbySearch(request, function (results, status) {
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
+                results.forEach((place) => {
+                    let marker = new google.maps.Marker({
+                        position: place.geometry.location,
+                        map: map,
+                        title: place.name,
+                    });
+
+                    let infoWindow = new google.maps.InfoWindow({
+                        content: `<strong>${place.name}</strong><br>${place.vicinity}`
+                    });
+
+                    marker.addListener("click", function () {
+                        infoWindow.open(map, marker);
+                    });
+                });
+            } else {
+                alert("No hospitals found nearby.");
+            }
+        });
+    }
+</script>
+
+<!-- Google Maps API -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRt_w2FVIe5FcMgx2SCfGWvaIpy98vn6s&libraries=places&callback=initMap" async defer></script>
+
+</body>
+</html>

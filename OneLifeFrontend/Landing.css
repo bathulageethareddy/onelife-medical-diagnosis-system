@@ -1,0 +1,255 @@
+nav {
+    background-color: blue; /* Set the background color of the navbar */
+    padding: 2px 0; /* Vertical padding for the navbar */
+    position: fixed; /* Makes the navbar stick to the top */
+    top: 0; /* Sticks the navbar to the top */
+    z-index: 1000; /* Ensures it stays above other elements */
+    width: 100%; /* Ensures the navbar spans the full width */
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+.navbar ul {
+    display: flex; /* Aligns list items in a row */
+    justify-content: flex-start; /* Align items to the left */
+    align-items: center; /* Center items vertically */
+    list-style: none; /* Removes bullet points */
+    margin: 0; /* Resets margin */
+    padding: 0; /* Resets padding */
+}
+
+.navbar ul li {
+    margin-right: 25px; /* Adds spacing between list items */
+}
+.responsive-img{
+    width:100px;
+    height:auto;
+    margin-left: 40;
+    margin-right: 20;
+}
+.navbar ul li:last-child {
+    margin-right: 0; /* Removes extra margin on the last item */
+}
+
+.navbar ul li a {
+    text-decoration: none; /* Removes underline from links */
+    color: white; /* Sets the link text color to white */
+    font-weight: bold; /* Makes the text bold */
+    padding: 5px 10px; /* Adds padding around the links */
+    display: inline-block; /* Ensures clickable area is padded */
+    font-size: 25px;
+}
+.main-title {
+    font-size: 50px;
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+    font-weight: bold;
+
+}
+.section-subtitle {
+    font-size: 20px;
+    text-align: center;
+    color: black; /* Slightly lighter than the main heading */
+    margin-top: 0px; /* Spacing between main heading and subheading */
+    margin-bottom: 30px; /* Spacing between subheading and content */
+    font-weight: bold;
+    line-height: 1.5;
+}
+
+.responsive-img2{
+    width:1000px;
+    height:auto;
+    float:right;
+
+}
+
+
+.slideshow-container{
+    position:relative;
+    max-width:77%; 
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    margin:auto;
+    overflow:hidden;
+}
+
+.slides{
+    display:none;
+    width:100%;
+    text-align: center;
+}
+.caption{
+    color:#fff;
+    font-size:18px;
+    text-align:center;
+    position:relative;
+    bottom:20px;
+    width:100%;
+    background:rgba(0,0,0,0.5);
+    padding: 10px 0;
+    margin-top: 15px;
+    
+}
+.prev,.next{
+    position:absolute;
+    top:50%;
+    transform:translateY(-20%);
+    cursor:pointer;
+    background-color: rgba(0,0,0,0.5);
+    color:white;
+    padding: 10px;
+    border:none;
+}
+.prev{
+    left:10px;
+}
+.next{
+    right:10px;
+}
+
+.dots{
+    text-align:center;
+    margin-top:10px;
+}
+.dots span{
+    height:15px;
+    width:15px;
+    margin:0 5px;
+    display:inline-block;
+    background-color: #bbb;
+    border-radius:50%;
+    cursor:pointer;
+}
+.dots .active{
+    background-color: #717171;
+    transform:scale(1);
+}
+.slide-img{
+    width:90%;
+    justify-content: center;
+    text-align: center;
+    height: 70vh;
+    max-height: 100vh;
+    object-fit: cover;
+
+}
+.responsive-img3{
+    width:300px;
+    height:auto;
+    margin-left: 55px; 
+    margin-right: 55px;  
+}
+.info {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+}
+.reviews-section {
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Review Container */
+.review-container {
+    display: flex;
+    justify-content: space-around; /* Space evenly between cards */
+    flex-wrap: wrap; /* Allows wrapping for smaller screens */
+    gap: 20px;
+}
+
+/* Individual Review Card */
+.review-card {
+    text-align: center;
+    width: 300px; /* Fixed width for each card */
+    background-color: #fff;
+    padding: 15px;
+    border: 1px solid #ddd; /* Light border around each card */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Images */
+.review-img {
+    width: 300px; /* Makes images responsive */
+    height: auto; /* Maintains aspect ratio */
+    border-radius: 10px; /* Rounded corners for the images */
+    margin-bottom: 10px; /* Adds space below the image */
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+/* Section Title */
+.section-title {
+    font-size: 50px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+@media (max-width: 768px) {
+    .review-container {
+        flex-direction: column; /* Stacks cards vertically on smaller screens */
+        align-items: center;
+    }
+}
+
+.disease-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.disease {
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+.disease img {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+
+.social-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Ensures responsiveness */
+    gap: 40px; /* Adjusts spacing between items */
+    padding: 0px 0;
+}
+
+.info1 {
+    font-size: 20px;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adds space between icon and text */
+    margin:40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.social-icon {
+    width: 40px;
+    height: auto;
+}

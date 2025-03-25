@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Liver</title>
+        <link rel="stylesheet" href="Liver.css">
+        <script>
+                    
+            function getDiagnosis() {
+                var inputs = document.querySelectorAll("input");
+                var allFilled = true;
+        
+                inputs.forEach(input => {
+                    if (input.value.trim() === "") {
+                        allFilled = false;
+                        
+                    } else {
+                        input.style.border = ""; 
+                    }
+                });
+        
+                if (!allFilled) {
+                    alert("Please fill out all fields before proceeding.");
+                    return;
+                }
+                function getDiagnosis() {
+                    var result = Math.random() < 0.5 ? "Sorry to say you are diagnosed with the Breastcancer" : "Hurray,You are not diagnosed with the BreastCancer";
+                    alert(result);
+                }
+                
+            }
+        </script>
+    </head>
+    <body>
+        <div class="header">Liver Disease</div>
+        
+        <div class="Container">
+            
+        <div class="box">
+        <label for="age">Age : </label>
+        <input type="text" id="age" name="age" placeholder="age">
+        </div><div class="box">
+        <label for="Total_Bilirubin">Total Billirubin : </label>
+        <input type="text" id="Total_Bilirubin" name="Total_Bilirubin" placeholder="Total_Bilirubin">
+        </div>
+        <div class="box">
+        <label for="Direct_Bilirubin">Direct Bilirubin : </label>
+        <input type="text" id="Direct_Bilirubin" name="Direct_Bilirubin" placeholder="Direct_Bilirubin">
+        </div>
+        <div class="box">
+        <label for="Alkaline_Phosphotase">Alkaline Phosphotase : </label>
+        <input type="text" id="Alkaline_Phosphotase" name="Alkaline_Phosphotase" placeholder="Alkaline_Phosphotase">
+        </div>
+        <div class="box">
+        <label for="Alamine_Aminotransferase">Alamine Aminotransferase : </label>
+        <input type="text" id="Alamine_Aminotransferase" name="Alamine_Aminotransferase" placeholder="Alamine_Aminotransferase">
+        </div>
+        <div class="box">
+        <label for="Aspartate_Aminotransferase">Aspartate Aminotransferase : </label>
+        <input type="text" id="Aspartate_Aminotransferase" name="Aspartate_Aminotransferase" placeholder="Aspartate_Aminotransferase">
+        </div>
+        <div class="box">
+        <label for="Albumin">Albumin : </label>
+        <input type="text" id="Albumin" name="Albumin" placeholder="Albumin">
+        </div>
+        <div class="box">
+        <label for="Albumin_and_Globulin_Ratioalbu">Albumin and Globulin Ratio : </label>
+        <input type="text" id="Albumin_and_Globulin_Ratio" name="Albumin_and_Globulin_Ratio" placeholder="Albumin_and_Globulin_Ratio">
+        </div>
+        <div class="box">
+        <label for="gender">Gender : </label>
+        <input type="text" id="gender" name="gender" placeholder="gender">
+        </div>
+        <div class="button"> 
+            <input type="Submit" name="Submit" onclick="getDiagnosis()">
+        </div>
+        </div>
+    </body>
+</html>

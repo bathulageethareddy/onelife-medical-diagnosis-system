@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            height: 100vh;
+            background-color: #f9f5f1;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            width: 70%;
+            max-width: 800px;
+            height: 80%;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .logo {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 0.5rem;
+        }
+
+        .illustration, .form-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .illustration {
+            background-color: rgb(207, 63, 143);
+        }
+
+        .illustration img {
+            max-width: 80%;
+            height: auto;
+        }
+
+        .form-section {
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .form-section h1 {
+            margin-bottom: 20px;
+            color: rgb(207, 63, 143);
+        }
+
+        .form-group {
+            width: 100%;
+            max-width: 300px;
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        .form-group .rating {
+            display: flex;
+            direction: rtl;
+            justify-content: flex-start;
+            font-size: 2rem;
+        }
+
+        .form-group .rating input {
+            display: none;
+        }
+
+        .form-group .rating label {
+            color: #ccc;
+            cursor: pointer;
+        }
+
+        .form-group .rating input:checked ~ label,
+        .form-group .rating input:checked ~ label ~ label {
+            color:rgb(207, 63, 143);
+        }
+
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            background-color: rgb(207, 63, 143);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .form-group button:hover {
+            background-color: rgb(190, 50, 130);
+        }
+
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .footer a {
+            color: rgb(207, 63, 143);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="images/logo.png" alt="Logo">
+        </div>
+        <div class="illustration">
+            <img src="Images/feedback.jpg" alt="Illustration">
+        </div>
+        <div class="form-section">
+            <h1>Feedback Form</h1>
+            <form id="feedback-form">
+                <div class="form-group">
+                    <label for="user-name">Name</label>
+                    <input type="text" id="user-name" name="userName" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="user-feedback">Feedback</label>
+                    <textarea id="user-feedback" name="userFeedback" rows="4" placeholder="Write your feedback here..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Rate Us</label>
+                    <div class="rating">
+                        <input type="radio" id="star5" name="rating" value="5" required><label for="star5" title="5 stars">&#9733;</label>
+                        <input type="radio" id="star4" name="rating" value="4"><label for="star4" title="4 stars">&#9733;</label>
+                        <input type="radio" id="star3" name="rating" value="3"><label for="star3" title="3 stars">&#9733;</label>
+                        <input type="radio" id="star2" name="rating" value="2"><label for="star2" title="2 stars">&#9733;</label>
+                        <input type="radio" id="star1" name="rating" value="1"><label for="star1" title="1 star">&#9733;</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button id="submitFeedback">Submit</button>
+                </div>
+            </form>
+
+            <div class="footer">
+                Already submitted feedback? <a href="responses.html">View Responses</a>
+            </div>        
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const feedbackForm = document.getElementById('feedback-form');
+            const submitBtn = document.getElementById("submitFeedback");
+
+            console.log(submitBtn); // Check if it's null
+
+            if (submitBtn) {
+                submitBtn.addEventListener("click", () => {
+                    console.log("Button clicked!");
+                });
+            } else {
+                console.error("Element #submitFeedback not found!");
+            }
+
+            feedbackForm.addEventListener('submit', async (event) => {
+                event.preventDefault(); // Prevent default form submission
+
+                const userName = document.getElementById('user-name').value.trim();
+                const userFeedback = document.getElementById('user-feedback').value.trim();
+                const rating = document.querySelector('input[name="rating"]:checked')?.value;
+
+                if (!userName || !userFeedback || !rating) {
+                    alert('Please fill in all fields and provide a rating.');
+                    return;
+                }
+
+                const feedbackData = {
+                    userName,
+                    userFeedback,
+                    rating
+                };
+
+                try {
+                    const response = await fetch('http://localhost:5003/api/feedback', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(feedbackData),
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        alert('Feedback submitted successfully!');
+                        feedbackForm.reset(); // Reset form fields
+                    } else {
+                        alert(data.message || data.error || 'Failed to submit feedback');
+                    }
+                } catch (error) {
+                    console.error('Error during feedback submission:', error);
+                    alert('Server error. Please try again later.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #004aad;
+            padding: 10px 20px;
+            color: white;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .search-bar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .search-bar select, .search-bar button {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .search-bar button {
+            background-color: #004aad;
+            color: white;
+            cursor: pointer;
+        }
+        .search-bar button:hover {
+            background-color: #003385;
+        }
+        .doctor-list {
+            margin-top: 20px;
+        }
+        .doctor-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+            padding: 15px 0;
+        }
+        .book-btn {
+            background-color: #004aad;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .book-btn:hover {
+            background-color: #003385;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo"><strong>One Life ❤</strong></div>
+        <div class="links">
+            <a href="#">Home</a>
+            <a href="#">Services</a>
+            <a href="#">Appointment</a>
+            <a href="#">D-Advise</a>
+            <a href="#">Contact Us</a>
+            <a href="#">About Us</a>
+        </div>
+    </div>
+    <div class="container">
+        <h1>Search Doctor or Hospital</h1>
+        <div class="search-bar">
+            <select id="city">
+                <option value="">City</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Delhi">Delhi</option>
+            </select>
+            <button onclick="searchDoctors()">Search</button>
+        </div>
+        <div class="doctor-list" id="doctor-list"></div>
+    </div>
+
+    <script>
+        function searchDoctors() {
+            const city = document.getElementById('city').value;
+            if (!city) {
+                alert('Please select a city to search hospitals.');
+                return;
+            }
+            
+            const hospitalsByCity = {
+                'Hyderabad': [
+                    { name: 'Apollo Health City', location: 'Jubilee Hills', doctors: [
+                        { name: 'Dr. Venkata Rao Abbineni', speciality: 'Internal Medicine', age: 40, language: 'English, Telugu' },
+                        { name: 'Dr. Rajib Paul', speciality: 'General Medicine', age: 20, language: 'English, Hindi, Telugu' }
+                    ] }
+                ],
+                'Mumbai': [
+                    { name: 'Fortis Hospital', location: 'Mulund', doctors: [
+                        { name: 'Dr. Meera Sharma', speciality: 'Cardiology', age: 45, language: 'English, Hindi' },
+                        { name: 'Dr. Arjun Kapoor', speciality: 'Neurology', age: 38, language: 'English, Marathi' }
+                    ] }
+                ],
+                'Delhi': [
+                    { name: 'Max Super Speciality Hospital', location: 'Saket', doctors: [
+                        { name: 'Dr. Ramesh Gupta', speciality: 'Oncology', age: 50, language: 'English, Hindi' },
+                        { name: 'Dr. Priya Sinha', speciality: 'Dermatology', age: 35, language: 'English, Hindi' }
+                    ] }
+                ]
+            };
+            
+            displayHospitals(hospitalsByCity[city] || []);
+        }
+
+        function displayHospitals(hospitals) {
+            const doctorList = document.getElementById('doctor-list');
+            doctorList.innerHTML = '';
+
+            hospitals.forEach(hospital => {
+                const hospitalHeader = document.createElement('h2');
+                hospitalHeader.textContent = ${hospital.name}, ${hospital.location};
+                doctorList.appendChild(hospitalHeader);
+                
+                hospital.doctors.forEach(doctor => {
+                    const doctorItem = document.createElement('div');
+                    doctorItem.className = 'doctor-item';
+                    doctorItem.innerHTML = `
+                        <div class="doctor-info">
+                            <p><strong>${doctor.name}</strong></p>
+                            <p>${doctor.age} years, ${doctor.speciality}</p>
+                            <p>Language: ${doctor.language}</p>
+                        </div>
+                        <button class="book-btn">Book Appointment</button>
+                    `;
+                    doctorList.appendChild(doctorItem);
+                });
+            });
+        }
+    </script>
+</body>
+</html>

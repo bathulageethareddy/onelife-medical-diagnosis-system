@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pneumonia Predictor</title>
+    <link rel="stylesheet" href="Pneumonia.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Pneumonia Predictor</h1>
+        <div class="card">
+            <h3>Please upload the image of the cell</h3>
+            <form class="form-horizontal" onsubmit="getDiagnosis(event)">
+                <input type="file" name="image" onchange="readURL(this);">
+                <br><br>
+                <img id="uploadedImage" src="#" alt="UPLOADED IMAGE WILL APPEAR HERE" 
+                     style="display: none; max-width: 100%; height: auto;"/>
+                <br><br>
+                <input class="btn" type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    let img = document.getElementById('uploadedImage');
+                    img.src = e.target.result;
+                    img.style.display = 'block'; // Show the image
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function getDiagnosis(event) {
+            event.preventDefault(); // Prevent form submission
+            var result = Math.random() < 0.5 ? 
+                "Sorry to say you are diagnosed with Pneumonia" : 
+                "Hurray, you are not diagnosed with Pneumonia";
+            alert(result);
+        }
+    </script>
+
+</body>
+</html>

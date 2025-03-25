@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Responses</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f5f1;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: rgb(207, 63, 143);
+        }
+        .response-container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .response {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+        .response:last-child {
+            border-bottom: none;
+        }
+        .rating {
+            color: rgb(207, 63, 143);
+            font-size: 1.2rem;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 15px;
+            background: rgb(207, 63, 143);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .back-btn:hover {
+            background: rgb(190, 50, 130);
+        }
+    </style>
+</head>
+<body>
+    <h1>Feedback Responses</h1>
+    <div class="response-container" id="response-container">
+        <p>Loading feedback responses...</p>
+    </div>
+    <a href="Feedback.html" class="back-btn">Back to Feedback Form</a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const response = await fetch('http://localhost:5003/api/feedback');
+                const feedbacks = await response.json();
+
+                const container = document.getElementById('response-container');
+                container.innerHTML = '';
+
+                if (feedbacks.length === 0) {
+                    container.innerHTML = '<p>No feedback available yet.</p>';
+                    return;
+                }
+
+                feedbacks.forEach(feedback => {
+                    const responseDiv = document.createElement('div');
+                    responseDiv.classList.add('response');
+                    responseDiv.innerHTML = `
+                        <h3>${feedback.userName}</h3>
+                        <p>${feedback.userFeedback}</p>
+                        <p class="rating">⭐ ${feedback.rating} / 5</p>
+                        <p><small>Submitted at: ${new Date(feedback.submittedAt).toLocaleString()}</small></p>
+                    `;
+                    container.appendChild(responseDiv);
+                });
+            } catch (error) {
+                console.error('Error fetching feedback:', error);
+                document.getElementById('response-container').innerHTML = '<p>Error loading feedback.</p>';
+            }
+        });
+    </script>
+</body>
+</html>

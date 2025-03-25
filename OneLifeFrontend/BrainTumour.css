@@ -1,0 +1,25 @@
+body {
+    background-color: white;
+    background-image: url("Images/BrainTumour1.jpg");
+    background-size: auto;
+    background-position: center;
+    background-size: 1500px;
+    text-align: center;
+    margin: 40px;
+}
+
+.card {
+    text-align: center;
+    margin: 50px;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.7);
+    color: black;
+    margin: 250px auto;
+    padding: 20px;
+    width: fit-content;
+    max-width: 90%;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+}
